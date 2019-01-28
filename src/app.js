@@ -1,19 +1,26 @@
+require("dotenv").config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const { GraphQLServer } = require("graphql-yoga");
 const { Prisma } = require("prisma-binding");
-const resolvers = require("./resolvers");
+const Query = require("./resolvers/Query");
+
 const app = express();
 
 app.use(bodyParser.json());
 
-const server = GraphQLServer({
-  typeDefs: "./schema.graphql",
+const resolvers = {
+  Query
+};
+
+const server = new GraphQLServer({
+  typeDefs: "./src/schema.graphql",
   resolvers,
   context: req => ({
     ...req,
     db: new Prisma({
-      typeDefs: "generated/prisma.graphql",
+      typeDefs: "./src/generated/prisma.graphql",
       endpoint: process.env.PRISMA_ENDPOINT,
       secret: process.env.PRISMA_SECRET,
       debug: false
