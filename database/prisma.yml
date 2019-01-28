@@ -1,5 +1,6 @@
-endpoint: https://us1.prisma.sh/edian-reyes/streetwise-prisma-api/dev
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.graphql
+secret: ${env:PRISMA_SECRET}
 
 hooks:
   post-deploy:
