@@ -10,6 +10,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "graphql": "^14.1.1"
+    "graphql": "^14.1.1",
+    "graphql-yoga": "^1.17.1",
+    "prisma-binding": "^2.3.0"
   }
 }

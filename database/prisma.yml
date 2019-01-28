@@ -1,0 +1,7 @@
+endpoint: https://us1.prisma.sh/edian-reyes/streetwise-prisma-api/dev
+datamodel: datamodel.graphql
+
+hooks:
+  post-deploy:
+    - graphql get-schema --project database
+    - graphql prepare
